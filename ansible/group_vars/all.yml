@@ -5,6 +5,7 @@ working_dir: "{{ ansible_env.PWD }}/illumidesk_deployment"
 # End-user account info
 org_name: "{{ org_name_param | default('my-org') }}"
 course_id: "{{ course_id_param | default('intro101') }}"
+tld: "{{ tld_param | default('example.com') }}"
 
 ## Upstream jupyterhub/jupyterhub and jupyter/docker-stacks hash commits
 # https://github.com/jupyter/docker-stacks/commit/76402a27fd13e649a3166b1da5a162ac476912bf

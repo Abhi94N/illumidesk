@@ -88,3 +88,17 @@
   file:
     path: "{{ working_dir }}"
     state: directory
+
+- name: get version for kubectl
+  shell: curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt
+    register: version
+- name: install kubectl
+  get_url:
+    url: "https://storage.googleapis.com/kubernetes-release/release/{{ version.stdout }}/bin/linux/amd64/kubectl"
+    dest: /usr/local/bin/
+    mode: '0440'
+- name: install minikube
+  get_url:
+    url: "https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64"
+    dest: /usr/local/bin/
+    mode: '0440'
